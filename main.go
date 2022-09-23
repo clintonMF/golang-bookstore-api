@@ -10,15 +10,15 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type event struct {
+type book struct {
 	ID          string `json:"ID"`
 	Title       string `json:"Title"`
 	Description string `json:"Description"`
 }
 
-type allEvents []event
+type allbooks []book
 
-var events = allEvents{
+var books = allbooks{
 	{
 		ID:          "1",
 		Title:       "Introduction to golang",
@@ -31,31 +31,31 @@ func homeLink(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "welcome home!")
 }
 
-func createEvent(w http.ResponseWriter, r *http.Request) {
-	var newEvent event
+func createBook(w http.ResponseWriter, r *http.Request) {
+	var newBook book
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		fmt.Fprintf(w, "Kindly enter data with event title and description only in order to update")
 	}
 
-	json.Unmarshal(reqBody, &newEvent)
-	events = append(events, newEvent)
+	json.Unmarshal(reqBody, &newBook)
+	books = append(books, newBook)
 	w.WriteHeader(http.StatusCreated)
 
-	json.NewEncoder(w).Encode(newEvent)
+	json.NewEncoder(w).Encode(newBook)
 }
 
-func getAllEvents(w http.ResponseWriter, r *http.Request) {
+func getAllBooks(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(events)
+	json.NewEncoder(w).Encode(books)
 }
 
-func getEvent(w http.ResponseWriter, r *http.Request) {
+func getBook(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	bookID := mux.Vars(r)["id"]
 
 	num := 0 // this number helps me handle not found cases
-	for _, book := range events {
+	for _, book := range books {
 		if book.ID == bookID {
 			json.NewEncoder(w).Encode(book)
 			num++
@@ -69,14 +69,14 @@ func getEvent(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func deleteEvent(w http.ResponseWriter, r *http.Request) {
+func deleteBook(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	bookID := mux.Vars(r)["id"]
 
 	num := 0 // this number helps me handle not found cases
-	for index, book := range events {
+	for index, book := range books {
 		if book.ID == bookID {
-			events = append(events[:index], events[index+1:]...)
+			books = append(books[:index], books[index+1:]...)
 			num++
 		}
 	}
@@ -87,7 +87,7 @@ func deleteEvent(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func updateEvent(w http.ResponseWriter, r *http.Request) {
+func updateBook(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -95,13 +95,13 @@ func updateEvent(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Kindly enter data with event title and description only in order to update")
 	}
 
-	var updateBook event
+	var updateBook book
 	bookID := mux.Vars(r)["id"]
 	json.Unmarshal(reqBody, &updateBook)
 	num := 0 //this number helps me handle not found cases
-	for index, book := range events {
+	for index, book := range books {
 		if book.ID == bookID {
-			theBook := &events[index]
+			theBook := &books[index]
 			theBook.Title = updateBook.Title
 			theBook.Description = updateBook.Description
 			json.NewEncoder(w).Encode(theBook)
@@ -118,11 +118,11 @@ func updateEvent(w http.ResponseWriter, r *http.Request) {
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", homeLink).Methods("GET")
-	router.HandleFunc("/books", createEvent).Methods("POST")
-	router.HandleFunc("/books", getAllEvents).Methods("GET")
-	router.HandleFunc("/books/{id}", getEvent).Methods("GET")
-	router.HandleFunc("/books/{id}", deleteEvent).Methods("DELETE")
-	router.HandleFunc("/books/{id}", updateEvent).Methods("PATCH")
+	router.HandleFunc("/books", createBook).Methods("POST")
+	router.HandleFunc("/books", getAllBooks).Methods("GET")
+	router.HandleFunc("/books/{id}", getBook).Methods("GET")
+	router.HandleFunc("/books/{id}", deleteBook).Methods("DELETE")
+	router.HandleFunc("/books/{id}", updateBook).Methods("PATCH")
 
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
