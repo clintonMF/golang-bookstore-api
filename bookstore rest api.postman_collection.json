@@ -1,0 +1,372 @@
+{
+	"info": {
+		"_postman_id": "6ea62676-ff00-4e65-8f08-521a582393ea",
+		"name": "bookstore rest api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21426120"
+	},
+	"item": [
+		{
+			"name": "books",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\": \"2\",\r\n    \"Title\": \"Advanced golang\",\r\n    \"Description\": \"come to learn advanced golang concepts\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/books",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "books",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": \"2\",\r\n    \"Title\": \"Advanced golang\",\r\n    \"Description\": \"come to learn advanced golang concepts\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 18:32:22 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "92"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\"ID\":\"2\",\"Title\":\"Advanced golang\",\"Description\":\"come to learn advanced golang concepts\"}\n"
+				}
+			]
+		},
+		{
+			"name": "homepage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "homepage",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 18:33:03 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "13"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "welcome home!"
+				}
+			]
+		},
+		{
+			"name": "books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/books",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "books",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 18:33:46 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "325"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": \"1\",\n        \"Title\": \"Introduction to golang\",\n        \"Description\": \"Come join us for a chance to see how golang works and eventually get to try it\"\n    },\n    {\n        \"ID\": \"2\",\n        \"Title\": \"Advanced golang\",\n        \"Description\": \"come to learn advanced golang concepts\"\n    },\n    {\n        \"ID\": \"3\",\n        \"Title\": \"Advanced golang\",\n        \"Description\": \"come to learn advanced golang concepts\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "book",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/books/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "book",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/books/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 18:33:37 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "92"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": \"2\",\n    \"Title\": \"Advanced golang\",\n    \"Description\": \"come to learn advanced golang concepts\"\n}"
+				}
+			]
+		},
+		{
+			"name": "book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/books/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "book",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/books/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 18:31:48 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "13"
+						}
+					],
+					"cookie": [],
+					"body": "book deleted\n"
+				}
+			]
+		},
+		{
+			"name": "modify book",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Title\": \"Intermediate golang\",\r\n    \"Description\": \"come to learn advanced golang concepts\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/books/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"books",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "modify book",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"Intermediate golang\",\r\n    \"Description\": \"come to learn advanced golang concepts\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/books/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 18:34:04 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "96"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": \"2\",\n    \"Title\": \"Intermediate golang\",\n    \"Description\": \"come to learn advanced golang concepts\"\n}"
+				}
+			]
+		}
+	]
+}
