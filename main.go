@@ -18,6 +18,7 @@ type book struct {
 
 type allbooks []book
 
+// this acts as the application database
 var books = allbooks{
 	{
 		ID:          "1",
@@ -77,6 +78,7 @@ func deleteBook(w http.ResponseWriter, r *http.Request) {
 	for index, book := range books {
 		if book.ID == bookID {
 			books = append(books[:index], books[index+1:]...)
+			fmt.Fprintln(w, "book deleted")
 			num++
 		}
 	}
